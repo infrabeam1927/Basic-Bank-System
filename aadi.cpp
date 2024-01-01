@@ -4,10 +4,10 @@ using namespace std;
 
 double calc(double balance, double amount);
 
-class account {
-public:
+struct account {
     int acno;
-    string name; // Change from char to string
+    string fname; // Change from char to string
+    string lname;
     double balance;
 };
 
@@ -16,7 +16,7 @@ void writeToFile(account a);
 void writeToFile(account a) {
     ofstream outFile("data.txt", ios::app);
     if (outFile.is_open()) {
-        outFile << a.acno << " " << a.name << " " << a.balance << endl;
+        outFile << a.acno << " " << a.fname << " " << a.lname << " "<< a.balance << endl;
         cout << "Account information written to data.txt successfully." << endl;
         outFile.close();
     } else {
@@ -76,10 +76,12 @@ int main() {
             cout << "Account exists." << endl;
             break; // Return to the initial choices
            }
-           cout << "enter name: ";
+           cout << "enter first name: ";
            cin.ignore(); // Clear the input buffer
            getline(cin, a.fname);
-
+           cout << "enter last name: ";
+           cin.ignore(); // Clear the input buffer
+           getline(cin, a.lname);
            a.balance = 0;
            writeToFile(a);
            break;
