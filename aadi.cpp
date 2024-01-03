@@ -6,7 +6,7 @@ double calc(double balance, double amount);
 
 struct account {
     int acno;
-    string fname; // Change from char to string
+    string fname; 
     string lname;
     double balance;
 };
@@ -31,21 +31,17 @@ bool checkAccountExists(int targetAcno) {
         string fname;
         string lname;
         double balance;
-
         while (inFile >> acno >> fname >> lname >> balance) {
             if (acno == targetAcno) {
-                // Account found
                 inFile.close();
                 return true;
             }
         }
-
-        // Account not found
         inFile.close();
-        return false; // Indicate that the account doesn't exist
+        return false; 
     } else {
         cerr << "Error opening data.txt for reading." << endl;
-        return false; // Indicate an error
+        return false; 
     }
 }
 account AccountExists(int targetAcno) {
@@ -67,17 +63,15 @@ account AccountExists(int targetAcno) {
                 return a;
             }
         }
-
-        // Account not found
         inFile.close();
     } else {
         cerr << "Error opening data.txt for reading." << endl;
-        return a; // Indicate an error
+        return a; 
     }
 }
 void transactionalaccount(account a, double money) {
     ifstream inFile("data.txt");
-    ofstream outFile("temp.txt"); // Temporary file to store updated information
+    ofstream outFile("temp.txt"); 
     if (inFile.is_open() && outFile.is_open()) {
         int accountno;
         string firstn, lastn;
@@ -85,20 +79,14 @@ void transactionalaccount(account a, double money) {
         while (inFile >> accountno >> firstn >> lastn >> balancemon) {
             if (accountno == a.acno) {
                 balancemon += money;
-                // Write the updated information to the temporary file
                 outFile << accountno << " " << firstn << " " << lastn << " " << balancemon << endl;
-                // Update the account object
                 a.balance = balancemon;
             } else {
-                // Copy other accounts unchanged to the temporary file
                 outFile << accountno << " " << firstn << " " << lastn << " " << balancemon << endl;
             }
         }
-
-        // Close the input and output files
         inFile.close();
         outFile.close();
-        // Replace the original file with the temporary file
         remove("data.txt");
         rename("temp.txt", "data.txt");
     } else {
@@ -107,7 +95,6 @@ void transactionalaccount(account a, double money) {
 
     return ;
 }
-
 double accountexistsinputaccno(){
     account a;
     int acno;
@@ -119,12 +106,39 @@ double accountexistsinputaccno(){
     }
     return -1;
 }
+void Displayaccount(int targetAcno){
+    ifstream inFile("data.txt");
+    account a;
+    if (inFile.is_open()) {
+        int acno;
+        string fname;
+        string lname;
+        double balance;
 
+        while (inFile >> acno >> fname >> lname >> balance) {
+            if (acno == targetAcno) {
+                a.acno=acno;
+                a.fname=fname;
+                a.lname=lname;
+                a.balance=balance;
+                inFile.close();
+                cout<<"Accoount number : "<<a.acno<<endl;
+                cout<<"Name : "<<a.fname<<" "<<a.lname<<endl;
+                cout<<"Account Balance : "<<a.balance<<endl;
+                
+            }
+        }
+        inFile.close();
+    } else {
+        cerr << "Error opening data.txt for reading." << endl;
+         
+    }
+
+}
 int main() {
     int choice, acno;
     char exists;
-    account a;
-    
+    account a;    
     double amount,balance,money;
     do {
         cout << "\n1. Calculate/calculator" << endl;
@@ -135,7 +149,6 @@ int main() {
         cout << "6. Exit" << endl;
         cout << "Enter choice: ";
         cin >> choice;
-
         switch (choice) {
         case 1:
             cout<< " Do you have an account(y/n): ";
@@ -157,14 +170,14 @@ int main() {
             cin >> a.acno;
             if (checkAccountExists(a.acno)) {
                 cout << "Account exists." << endl;
-                break; // Return to the initial choices
+                break; 
             }
             
             cout << "enter first name: ";
-            cin.ignore(); // Clear the input buffer
+            cin.ignore(); 
             getline(cin, a.fname);
             cout << "enter last name: ";
-            cin.ignore(); // Clear the input buffer
+            cin.ignore(); 
             getline(cin, a.lname);
             a.balance = 0;
             writeToFile(a);
@@ -175,7 +188,7 @@ int main() {
             cin>>a.acno;
             if (!checkAccountExists(a.acno)) {
                 cout << "Account does not exist." << endl;
-                break; // Return to the initial choices
+                break; 
             }
             a=AccountExists(a.acno);
             cout<<"Deposit(1) or withdraw(2) :";
@@ -190,21 +203,33 @@ int main() {
                 double money1=-money;
                 money=money1;
             }
+            if (money==0){
+                cout<<"Transaction INVALID as entered amount is 0"<<endl;
+                Displayaccount(a.acno);
+                break;
+            }
             
             cout<<"money = "<<money;    
             if (calc(a.balance,money)<0){
-                cout<<"Transaction not possible";
+                cout<<"Transaction not possible"<<endl;
                 break;
             }  
             transactionalaccount(a,money);
             break;
-                                       
+        case 4:
+            cout<<"Enter acno :";
+            cin>>a.acno;
+            if (!checkAccountExists(a.acno)) {
+                cout << "Account does not exist." << endl;
+                break; 
+            }
+            Displayaccount(a.acno);
+            break;                               
         case 5:
             cout << "enter account number : ";
             cin >> a.acno;
             if (checkAccountExists(a.acno)) {
              cout << "Account exists." << endl;
-              // Return to the initial choices
             }
             a=AccountExists(a.acno);
             cout<<"Balance = $ "<<a.balance;
