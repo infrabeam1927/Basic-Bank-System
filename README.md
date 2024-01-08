@@ -21,11 +21,11 @@ To run the application, follow these steps:
    git clone https://github.com/your-username/bank-account-app.git
 2. Compile the C++ program.
 
-    '''bash
+    ```bash
     g++ main.cpp -o bank_app
 3. Run the Executable.
 
-    '''bash
+    ```bash
     ./bank_app
 ## Usage
 
