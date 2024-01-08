@@ -29,18 +29,18 @@ Run the Executable.
 bash
 Copy code
 ./bank_app
-# Usage
+## Usage
 
 1. Upon running the program, a menu will be displayed with various options.
 2. Choose the desired option by entering the corresponding number.
 3. Follow the prompts to perform actions such as creating an account, depositing or withdrawing money, and checking account information.
 4. The application provides a simple interface for managing bank accounts.
 
-# Contributing
+## Contributing
 
 - If you'd like to contribute to the project, feel free to fork the repository, make your changes, and submit a pull request. Contributions are welcome!
 
-# License
+## License
 
 - This project is licensed under the MIT License. Feel free to use, modify, and distribute the code for your own purposes.
 
@@ -48,10 +48,5 @@ Copy code
 
 - Special thanks to the contributors who have helped improve and maintain this project. Your efforts are highly appreciated!
 
-Happy coding! 🚀
+Happy Bank System! 🚀
 
-License
-This project is licensed under the MIT License. Feel free to use, modify, and distribute the code for your purposes.
-Acknowledgements
-Special thanks to the contributors who have helped improve and maintain this project. Your efforts are highly appreciated!
-Happy bank system! 🚀
