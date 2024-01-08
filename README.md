@@ -19,16 +19,14 @@ To run the application, follow these steps:
 1. Clone the repository to your local machine.
    ```bash
    git clone https://github.com/your-username/bank-account-app.git
-Compile the C++ program.
+2. Compile the C++ program.
 
-bash
-Copy code
-g++ main.cpp -o bank_app
-Run the Executable.
+    '''bash
+    g++ main.cpp -o bank_app
+3. Run the Executable.
 
-bash
-Copy code
-./bank_app
+    '''bash
+    ./bank_app
 ## Usage
 
 1. Upon running the program, a menu will be displayed with various options.
