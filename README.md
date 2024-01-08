@@ -18,37 +18,35 @@ To run the application, follow these steps:
    ```bash
    git clone https://github.com/your-username/bank-account-app.git
 
-# Compile and Run the C++ Program
-
 ## Compile the C++ program
 
 ```bash
 g++ main.cpp -o bank_app
 
-# Run the Executable
+## Run the Executable
 
 To run the compiled C++ program, follow these steps:
 
 ```bash
 ./bank_app
 
-# Usage
+## Usage
 
 - Upon running the program, a menu will be displayed with various options.
 - Choose the desired option by entering the corresponding number.
 - Follow the prompts to perform actions such as creating an account, depositing or withdrawing money, and checking account information.
 - The application provides a simple interface for managing bank accounts.
 
-# Contributing
+## Contributing
 
 - If you'd like to contribute to the project, feel free to fork the repository, make your changes, and submit a pull request. Contributions are welcome!
 
-# License
+## License
 
 - This project is licensed under the MIT License. Feel free to use, modify, and distribute the code for your own purposes.
 
-# Acknowledgements
+## Acknowledgements
 
 - Special thanks to the contributors who have helped improve and maintain this project. Your efforts are highly appreciated!
 
-Happy coding! 🚀
+Happy bank system! 🚀
