@@ -1,4 +1,4 @@
-Daily Planner App
+Basic Bank System
 This repository contains a simple console-based application for managing bank accounts. Users can perform various operations such as creating accounts, depositing or withdrawing money, checking account balances, and more.
 
 Features
